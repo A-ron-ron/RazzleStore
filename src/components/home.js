@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
       <div>
-        <p> {Hello} You've been routed to the Home Page </p>
+        <p> {Hello} Context Trial </p>
       </div>
     );
   }
