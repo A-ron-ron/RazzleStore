@@ -8,16 +8,13 @@ import App from './App';
 
 import routes from './routes';
 
-import { ContextProvider } from "./context"
 
 
 
 hydrate((
-  <ContextProvider>
     <Router>
       <App routes={routes} initialData={window.DATA} />
     </Router>
- </ContextProvider>
 ), document.getElementById('root'));
 
 if (module.hot) {

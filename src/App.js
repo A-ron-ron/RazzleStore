@@ -1,5 +1,5 @@
 import './App.css';
-import TestContext from "./context.js";
+import TestContext from "./TestContext.js";
 import React, { useContext } from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
