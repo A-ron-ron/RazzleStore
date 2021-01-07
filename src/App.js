@@ -4,10 +4,12 @@ import React, { useContext } from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 
-const App = ({ routes, initialData }) => {
-  const { TestContext } = useContext(TestContext)
+class App extends React.Component ({ routes, initialData }) {
+  static contextType = TestContext;
+
+  render(){
   console.log(this.context)
-  return routes
+  return (routes
     ? <div>
         <Switch>
           {routes.map((route, index) => {
@@ -28,7 +30,7 @@ const App = ({ routes, initialData }) => {
           })}
         </Switch>
       </div>
-    : null;
-};
+    : null)
+}};
 
 export default App;
