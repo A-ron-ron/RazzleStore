@@ -1,11 +1,12 @@
 import './App.css';
-
-import React from 'react';
+import TestContext from "./context.js";
+import React, { useContext } from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 
 const App = ({ routes, initialData }) => {
-
+  const { TestContext } = useContext(TestContext)
+  console.log(this.context)
   return routes
     ? <div>
         <Switch>

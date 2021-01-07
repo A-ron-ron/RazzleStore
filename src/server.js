@@ -13,6 +13,8 @@ import { StaticRouter, matchPath } from 'react-router-dom';
 import ErrorComponent from './components/about';
 import routes from './routes';
 
+const TestContext = require("./TestContext.js")
+
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const server = express();
@@ -21,6 +23,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', async (req, res) => {
     const context = {};
+    
     // This data fetching technique came from a gist by @ryanflorence
     // @see https://gist.github.com/ryanflorence/efbe562332d4f1cc9331202669763741
     try {
@@ -34,11 +37,13 @@ server
         })
       );
 
+
+
       // Pass our routes and data array to our App component
-      const markup = renderToString(
-        <StaticRouter context={context} location={req.url}>
-          <App routes={routes} initialData={data} />
-        </StaticRouter>
+      const markup = ReactDOMServer.renderToStaticMarkup(
+        <TestContext.Provider value={{ hello: "hello" }}>
+          <App />
+        </TestContext.Provider>
       );
 
       // We rewind ReactHelmet for meta tags
@@ -90,5 +95,7 @@ server
       );
     }
   });
+
+  
 
 export default server;
